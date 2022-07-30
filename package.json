@@ -1,0 +1,39 @@
+{
+    "name": "ailight-z80-assembler",
+    "displayName": "AILight Z80 Assembler",
+    "description": "AILight A80 Assembler support for Visual Studio Code",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AILight/AILZ80ASM/AILZ80ASM.VSCode"
+    },
+    "version": "0.0.1",
+    "icon": "logo.png",
+    "author": "M.Ishino (AILight)",
+    "publisher": "AILight",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "keywords": [
+        "assembler",
+        "z80",
+        "AILZ80ASM"
+    ],
+    "homepage": "https://github.com/AILight/AILZ80ASM/AILZ80ASM.VSCode",
+    "license": "MIT",
+    "contributes": {
+        "languages": [{
+            "id": "z80asm",
+            "aliases": ["z80 assembler", "z80asm"],
+            "extensions": [".asm",".z80", ".inc", ".lst"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "z80asm",
+            "scopeName": "source.z80",
+            "path": "./syntaxes/z80asm.tmLanguage.json"
+        }]
+    }
+}

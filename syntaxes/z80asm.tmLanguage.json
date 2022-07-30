@@ -1,0 +1,232 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "z80 assembler",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#mnemonics"
+		},
+		{
+			"include": "#types"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+		  "include": "#labels"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.z80asm",
+					"begin": ";",
+					"end": "\\n"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.z80asm",
+					"match": "(?i)\\b(org|align|ds|equ|charmap|include|binary|text|db|dw|defb|defs|defw|dbfil|dwfil|end|pragms)\\b"
+				},
+				{
+					"name": "keyword.control.z80asm",
+					"match": "(?i)\\b(macro|rept|endm|function)\\b"
+				},
+				{
+					"name": "keyword.control.z80asm",
+					"match": "(?i)\\b(#if|#elif|#else|#endif|#error|#print)\\b"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.z80asm",
+					"begin": "\"",
+					"beginCaptures": {
+					  "0": {
+						"name": "punctuation.definition.string.begin.z80asm"
+					  }
+					},
+					"end": "(\")|((?:[^\\\\\\n])$)",
+					"endCaptures": {
+					  "1": {
+						"name": "punctuation.definition.string.end.z80asm"
+					  },
+					  "2": {
+						"name": "invalid.illegal.newline.z80asm"
+					  }
+					},
+					"patterns": [
+					  {
+						"include": "#string-character-escape"
+					  }
+					]
+				},
+				{
+					"name": "string.quoted.single.z80asm",
+					"begin": "'",
+					"beginCaptures": {
+						"0": {
+						  "name": "punctuation.definition.string.begin.z80asm"
+						}
+					},
+					"end": "(')|(\\n)",
+					"endCaptures": {
+					  "1": {
+						"name": "punctuation.definition.string.end.z80asm"
+					  },
+					  "2": {
+						"name": "invalid.illegal.newline.z80asm"
+					  }
+					},
+					"patterns": [
+						{
+							"include": "#string-character-escape"
+						}
+					]
+				}
+			]
+		},
+		"string-character-escape": {
+			"patterns": [
+				{
+					"name": "constant.character.escape.z80asm",
+					"match": "\\\\(x[0-9A-Fa-f]{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)"
+				}
+			]
+		},
+		"mnemonics": {
+			"patterns": [
+				{
+					"name": "keyword.mnemonic.z80asm",
+					"match": "(?i)\\b(LD|LDI|LDIR|LDD|LDDR|EX|EXX|PUSH|POP)\\b"
+				},
+				{
+					"name": "keyword.mnemonic.z80asm",
+					"match": "(?i)\\b(RLCA|RLA|RLC|RL|RRCA|RRA|RRC|RR|SLA|SLL|SRA|SRL)\\b"
+				},
+				{
+					"name": "keyword.mnemonic.z80asm",
+					"match": "(?i)\\b(ADD|ADC|INC|SUB|SBC|DEC)\\b"
+				},
+				{
+					"name": "keyword.mnemonic.z80asm",
+					"match": "(?i)\\b(AND|OR|XOR|CPL|NEG|CCF|SCF|BIT|SET|RES)\\b"
+				},
+				{
+					"name": "keyword.mnemonic.z80asm",
+					"match": "(?i)\\b(CPI|CPIR|CPD|CPDR|CP)\\b"
+				},
+				{
+					"name": "keyword.mnemonic.z80asm",
+					"match": "(?i)\\b(JP|JR|DJNZ|CALL|RET|RETI|RETN|RST)\\b"
+				},
+				{
+					"name": "keyword.mnemonic.z80asm",
+					"match": "(?i)\\b(NOP|HALT|DI|EI|IM)\\b"
+				},
+				{
+					"name": "keyword.mnemonic.z80asm",
+					"match": "(?i)\\b(IN|INI|INIR|IND|INDR)\\b"
+				},
+				{
+					"name": "keyword.mnemonic.z80asm",
+					"match": "(?i)\\b(OUT|OUTI|OTIR|OUTD|OTDR)\\b"
+				},
+				{
+					"name": "keyword.mnemonic.z80asm",
+					"match": "(?i)\\b(DAA|RLD|RRD)\\b"
+				}
+			]
+		},
+		"types": {
+			"patterns": [
+				{
+					"match": "(?i:(AF'))",
+					"captures": {
+						"1": {
+							"name": "support.type.register.z80asm"
+						}
+					}
+				},
+				{
+					"name": "support.type.register.z80asm",
+					"match": "(?i)\\b(A|B|C|D|E|H|L|I|F|R|IXH|IXL|IYH|IYL|AF|BC|DE|HL|SP|IX|IY|NZ|Z|NC|C|PO|PE|P|M)\\b"
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+			  {
+				"name": "constant.numeric.integer.hexadecimal.z80asm",
+				"match": "\\$[0-9a-fA-F]+"
+			  },
+			  {
+				"name": "constant.numeric.integer.hexadecimal.z80asm",
+				"match": "\\b([0-9a-fA-F]+[hH])\\b"
+			  },
+			  {
+				"name": "constant.numeric.integer.hexadecimal.z80asm",
+				"match": "\\b(0x[0-9a-fA-F]+)\\b"
+			  },
+			  {
+				"name": "constant.numeric.integer.octal.z80asm",
+				"match": "\\b[0-7]+[oO]\\b"
+			  },
+			  {
+				"name": "constant.numeric.integer.binary.z80asm",
+				"match": "%[0_1]+"
+			  },
+			  {
+				"name": "constant.numeric.integer.binary.z80asm",
+				"match": "\\b[0_1]+[bB]\\b"
+			  },
+			  {
+				"name": "constant.numeric.integer.decimal.z80asm",
+				"match": "\\b\\d+\\b"
+			  }
+			]
+		},
+		"labels": {
+			"patterns": [
+				{
+					"match": "^\\s*[a-zA-Z0-9!-/:-@\\[-~]+:+",
+					"name": "variable.parameter.label.z80asm"
+				},
+				{
+					"match": "^\\s*\\.[a-zA-Z0-9!-/:-@\\[-~]+",
+					"name": "variable.parameter.label.z80asm"
+				},
+				{
+					"match": "^\\s*\\.[a-zA-Z0-9!-/:-@\\[-~]+",
+					"name": "variable.parameter.label.z80asm"
+				},
+				{
+					"match": "(?i)^\\s*([a-zA-Z0-9!-/:-@\\[-~]+)\\s+(equ)",
+					"captures": {
+						"1": {
+							"name": "variable.parameter.label.z80asm"
+						},
+						"2": {
+							"name": "keyword.control.z80asm"
+						}
+					}
+				}
+			]
+		}
+	},
+	"scopeName": "source.z80"
+}
