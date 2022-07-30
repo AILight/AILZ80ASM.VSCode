@@ -4,7 +4,7 @@
     "description": "AILight A80 Assembler support for Visual Studio Code",
     "repository": {
         "type": "git",
-        "url": "https://github.com/AILight/AILZ80ASM/AILZ80ASM.VSCode"
+        "url": "https://github.com/AILight/AILZ80ASM.VSCode"
     },
     "version": "0.0.1",
     "icon": "logo.png",
@@ -21,7 +21,7 @@
         "z80",
         "AILZ80ASM"
     ],
-    "homepage": "https://github.com/AILight/AILZ80ASM/AILZ80ASM.VSCode",
+    "homepage": "https://github.com/AILight/AILZ80ASM.VSCode",
     "license": "MIT",
     "contributes": {
         "languages": [{
