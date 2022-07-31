@@ -198,6 +198,11 @@
 				"name": "constant.numeric.integer.decimal.z80asm",
 				"match": "\\b\\d+\\b"
 			  }
+			  ,
+			  {
+				"name": "constant.numeric.integer.boolean.z80asm",
+				"match": "(?i)(#true|#false)"
+			  }
 			]
 		},
 		"labels": {

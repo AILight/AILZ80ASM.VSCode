@@ -1,12 +1,12 @@
 {
     "name": "ailight-z80-assembler",
     "displayName": "AILight Z80 Assembler",
-    "description": "AILight A80 Assembler support for Visual Studio Code",
+    "description": "AILight Z80 Assembler support for Visual Studio Code",
     "repository": {
         "type": "git",
         "url": "https://github.com/AILight/AILZ80ASM.VSCode"
     },
-    "version": "0.0.1",
+    "version": "0.0.2",
     "icon": "logo.png",
     "author": "M.Ishino (AILight)",
     "publisher": "AILight",
