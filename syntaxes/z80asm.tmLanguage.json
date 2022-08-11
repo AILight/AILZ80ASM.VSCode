@@ -21,7 +21,10 @@
 			"include": "#numbers"
 		},
 		{
-		  "include": "#labels"
+		  	"include": "#labels"
+		},
+		{
+			"include": "#macros"
 		}
 	],
 	"repository": {
@@ -42,7 +45,7 @@
 				},
 				{
 					"name": "keyword.control.z80asm",
-					"match": "(?i)\\b(macro|rept|endm|function)\\b"
+					"match": "(?i)\\b(rept|endm|function)\\b"
 				},
 				{
 					"name": "keyword.control.z80asm",
@@ -227,6 +230,21 @@
 						},
 						"2": {
 							"name": "keyword.control.z80asm"
+						}
+					}
+				}
+			]
+		},
+		"macros": {
+			"patterns": [
+				{
+					"match": "(?i)(macro)\\s+([a-zA-Z0-9_()]+)",
+					"captures": {
+						"1":{
+							"name": "keyword.control.z80asm"
+						},
+						"2": {
+							"name": "variable.parameter.label.z80asm"
 						}
 					}
 				}

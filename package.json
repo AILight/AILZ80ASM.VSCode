@@ -6,7 +6,7 @@
         "type": "git",
         "url": "https://github.com/AILight/AILZ80ASM.VSCode"
     },
-    "version": "0.0.2",
+    "version": "0.0.3",
     "icon": "logo.png",
     "author": "M.Ishino (AILight)",
     "publisher": "AILight",
