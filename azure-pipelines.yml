@@ -4,6 +4,7 @@ trigger:
   tags:
     include:
       - v*
+pr: none  # no PR triggers
 
 pool:
   vmImage: ubuntu-20.04
